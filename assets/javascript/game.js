@@ -1,4 +1,4 @@
-var firebaseApi = AIzaSyClwRXheZqZBWVw78UKc_agW1OJekjqSw8;
+var firebaseApi = "AIzaSyClwRXheZqZBWVw78UKc_agW1OJekjqSw8";
 
 var config = {
     type: Phaser.AUTO,
@@ -14,12 +14,7 @@ var config = {
     scene: {
         preload: preload,
         create: create
-
     },
-
-    };
-
-
 };
 
 var game = new Phaser.Game(config);
