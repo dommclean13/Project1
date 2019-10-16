@@ -18,6 +18,9 @@ var config = {
 var game = new Phaser.Game(config);
 
 function preload (){
+    //this.load.setBaseURL('https://labs.phaser.io');
+    this.load.image('ship', 'assets/images/ship.png');
+    this.load.image('asteroid','assets/images/pixel_asteroid.png');
 
     //this.load.setBaseURL('https://labs.phaser.io');
     this.load.image('ship', 'assets/images/ship.png');
