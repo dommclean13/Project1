@@ -13,8 +13,14 @@ var config = {
     },
     scene: {
         preload: preload,
+
+        create: create,
+    }
+
+
         create: create
     },
+
 };
 
 var game = new Phaser.Game(config);
