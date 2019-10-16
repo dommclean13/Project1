@@ -12,7 +12,9 @@ var config = {
     scene: {
         preload: preload,
         create: create
-    }
+    };
+
+    var apiKey = AIzaSyClwRXheZqZBWVw78UKc_agW1OJekjqSw8
 };
 
 var game = new Phaser.Game(config);
