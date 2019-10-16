@@ -2,6 +2,7 @@ var config = {
     type: Phaser.AUTO,
     width: 640,
     height: 480,
+    parent: 'game-screen',
     physics: {
         default: 'arcade',
         arcade: {
@@ -17,6 +18,10 @@ var config = {
 var game = new Phaser.Game(config);
 
 function preload (){
+
+    //this.load.setBaseURL('https://labs.phaser.io');
+    this.load.image('ship', 'assets/images/ship.png');
+    this.load.image('asteroid','assets/images/pixel_asteroid.png');
     this.load.setBaseURL('https://labs.phaser.io');
 
     this.load.image('sky', 'assets/skies/space3.png');
@@ -25,9 +30,9 @@ function preload (){
 }
 
 function create (){
-    this.add.image(400, 300, 'sky');
+    this.add.image(400, 300, 'ship');
 
-    var particles = this.add.particles('red');
+    var particles = this.add.particles('asteroid');
 
     var emitter = particles.createEmitter({
         speed: 100,
@@ -35,7 +40,7 @@ function create (){
         blendMode: 'ADD'
     });
 
-    var logo = this.physics.add.image(400, 100, 'logo');
+    var logo = this.physics.add.image(400, 100, 'asteroid');
 
     logo.setVelocity(100, 200);
     logo.setBounce(1, 1);
