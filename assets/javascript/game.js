@@ -8,40 +8,70 @@ var config = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 200 }
+            gravity: { y: 0 }
         }
     },
     scene: {
         preload: preload,
+
         create: create,
     }
+
+
+        create: create
+    },
 
 };
 
 var game = new Phaser.Game(config);
+var player;
+var rotation;
 
 function preload (){
     //this.load.setBaseURL('https://labs.phaser.io');
     this.load.image('ship', 'assets/images/ship.png');
     this.load.image('asteroid','assets/images/pixel_asteroid.png');
+    this.load.image('exhaust','assets/images/thruster-4.png')
 }
 
 function create (){
-    this.add.image(400, 300, 'ship');
+    player = this.physics.add.image(400, 300, 'ship').setScale(.5);
+    var playerSpeed = 100;
 
-    var particles = this.add.particles('asteroid');
+    // exhaust particle progress
+    //var playerExhaust = this.add.particles('exhaust');
+    //var playerEmitter = playerExhaust.createEmitter({
+    //    speed: 3,
+    //    scale: { start: 1, end: 0 },
+    //    blendMode: 'ADD',
+    //    maxParticles: 5,
+    //    accelerationX: 300
+        
+    //});
+    //playerEmitter.startFollow(player);
 
-    var emitter = particles.createEmitter({
-        speed: 100,
-        scale: { start: 1, end: 0 },
-        blendMode: 'ADD'
+    this.input.keyboard.on('keydown_W', function (event){
+        player.body.setVelocity(Math.floor(playerSpeed*Math.cos(player.body.angle))
+        ,Math.floor(playerSpeed*Math.sin(player.body.angle)))
+        console.log(player.body.angle)
+    });
+    this.input.keyboard.on('keydown_D', function (event) {
+        if (player.body.angularVelocity < 70){
+            player.body.angularVelocity += 5
+            console.log(player.body.angularVelocity)
+        }
+    });
+    this.input.keyboard.on('keydown_A', function (event) {
+        if (player.body.angularVelocity > -70){
+            player.body.angularVelocity -= 5
+        }
     });
 
-    var logo = this.physics.add.image(400, 100, 'asteroid');
 
-    logo.setVelocity(100, 200);
-    logo.setBounce(1, 1);
-    logo.setCollideWorldBounds(true);
+    var asteroid = this.physics.add.image(400, 100, 'asteroid');
 
-    emitter.startFollow(logo);
+    asteroid.setVelocity(100, 200);
+    asteroid.setBounce(1, 1);
+    asteroid.setCollideWorldBounds(true);
+
 }
