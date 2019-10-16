@@ -27,27 +27,54 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <h1>Asteroid</h1>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-6 game-screen" id = "game-screen">
-                
+            <div class="col-12">
+                <h1>Asteroid</h1>
             </div>
-        <div class="col-md-6 offset-md-6 info">
-            <p>This is a Asteroid game in which you have one simple goal.
-                Use the arrow keys to move and spacebar to fire at oncoming asteroids,
-                every ten points you get, the difficulty will increase. The game will 
-                continue till you run out of health. Try to beat your high score!!!
-            </p>
         </div>
-    </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-8 game-screen" id="game-screen">
+
+            </div>
+            <div class="col-sm-10 col-md-10 col-lg-4 info">
+                <p>This is a Asteroid game in which you have one simple goal.
+                    Use the arrow keys to move and spacebar to fire at oncoming asteroids,
+                    every ten points you get, the difficulty will increase. The game will
+                    continue till you run out of health. Try to beat your high score!!!
+                </p>
+
+                <div class="col-6-md score">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Leader</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
     </div>
+
+
+    <footer class="footer">
+        <h2>Asteroid</h2>
+    </footer>
 
         <!-- Dominique's Firebase and Soundcloud Javascript link below -->
     <script src="/homework/Project1/assets/javascript/firebase-soundcloud.js"></script>
         <!-- Nick's Phaser Javascript Code -->
+
     <script src="assets/javascript/game.js"></script>
 
 
