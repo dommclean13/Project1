@@ -15,13 +15,13 @@ var config = {
         preload: preload,
 
         create: create,
-    }
+    },
 
 
         create: create
     },
 
-};
+
 
 var game = new Phaser.Game(config);
 var player;
