@@ -14,12 +14,20 @@ var config = {
     scene: {
         preload: preload,
 
-        create: create
+
+        create: create,
+
+        
+
     },
 
 
         create: create
     }
+
+
+
+
 
 
 

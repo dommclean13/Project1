@@ -1,12 +1,4 @@
-var api = AIzaSyClwRXheZqZBWVw78UKc_agW1OJekjqSw8;
-
-var results = 0;
-
-var wins = 0;
-
-
-
-  // Your web app's Firebase configuration
+// Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyClwRXheZqZBWVw78UKc_agW1OJekjqSw8",
     authDomain: "the-game-63f83.firebaseapp.com",
@@ -22,3 +14,7 @@ var wins = 0;
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.database();
+
+
+
+
