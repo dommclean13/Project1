@@ -14,6 +14,7 @@ var config = {
     scene: {
         preload: preload,
         create: create,
+        update: update
     },
         create: create
 }
@@ -21,51 +22,69 @@ var config = {
 var game = new Phaser.Game(config);
 var player;
 var rotation;
+var can_shoot = true;
 
 function preload (){
     //this.load.setBaseURL('https://labs.phaser.io');
     this.load.image('ship', 'assets/images/ship.png');
     this.load.image('asteroid','assets/images/pixel_asteroid.png');
-    this.load.image('exhaust','assets/images/thruster-4.png')
+    this.load.image('exhaust','assets/images/thruster-4.png');
+    this.load.image('laser','assets/images/pixel_laser_red.png');
 }
 
 function create (){
+    var lasers = this.add.group();
     player = this.physics.add.image(400, 300, 'ship').setScale(.5);
     var playerSpeed = 100;
 
-    // exhaust particle progress
-    //var playerExhaust = this.add.particles('exhaust');
-    //var playerEmitter = playerExhaust.createEmitter({
-    //    speed: 3,
-    //    scale: { start: 1, end: 0 },
-    //    blendMode: 'ADD',
-    //    maxParticles: 5,
-    //    accelerationX: 300
-        
-    //});
-    //playerEmitter.startFollow(player);
-
+    // Key W pressed
     this.input.keyboard.on('keydown_W', function (event){
         player.body.setVelocity(Math.floor(playerSpeed*Math.cos(player.body.rotation*3.14/180))
         ,Math.floor(playerSpeed*Math.sin(player.body.rotation*3.14/180)))
-        console.log(player.body.angle)
+        console.log(player.x)
     });
+
+    // Key D pressed
     this.input.keyboard.on('keydown_D', function (event) {
         if (player.body.angularVelocity < 70){
             player.body.angularVelocity += 5
-            console.log(player.body.angularVelocity)
         }
     });
+
+    // Key A pressed
     this.input.keyboard.on('keydown_A', function (event) {
         if (player.body.angularVelocity > -70){
             player.body.angularVelocity -= 5
         }
     });
 
+    // Key spacebar pressed
+    this.input.keyboard.on('keydown_SPACE', function (event) {
+        if (can_shoot){
+            can_shoot = false;
+            lasers.create(player.x,player.y,'laser');
+        }
+    });
+
+    // Key spacebar released
+    this.input.keyboard.on('keyup_SPACE', function (event) {
+        can_shoot = true;
+    });
 
     var asteroid = this.physics.add.image(400, 100, 'asteroid');
 
     asteroid.setVelocity(100, 200);
     asteroid.setBounce(1, 1);
     asteroid.setCollideWorldBounds(true);
+}
+function update(){
+    if (player.x > 595){
+        player.x = 0;
+    }else if (player.y > 430){
+        player.y = 0;
+    }else if(player.y < 0){
+        player.y = 430;
+    }else if(player.x < 0){
+        player.x = 595;
+    }
 }
