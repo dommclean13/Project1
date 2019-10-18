@@ -13,23 +13,10 @@ var config = {
     },
     scene: {
         preload: preload,
-
-
         create: create,
-
-        
-
     },
-
-
         create: create
-    }
-
-
-
-
-
-
+}
 
 var game = new Phaser.Game(config);
 var player;
@@ -59,8 +46,8 @@ function create (){
     //playerEmitter.startFollow(player);
 
     this.input.keyboard.on('keydown_W', function (event){
-        player.body.setVelocity(Math.floor(playerSpeed*Math.cos(player.body.angle))
-        ,Math.floor(playerSpeed*Math.sin(player.body.angle)))
+        player.body.setVelocity(Math.floor(playerSpeed*Math.cos(player.body.rotation*3.14/180))
+        ,Math.floor(playerSpeed*Math.sin(player.body.rotation*3.14/180)))
         console.log(player.body.angle)
     });
     this.input.keyboard.on('keydown_D', function (event) {
@@ -81,5 +68,4 @@ function create (){
     asteroid.setVelocity(100, 200);
     asteroid.setBounce(1, 1);
     asteroid.setCollideWorldBounds(true);
-
 }
