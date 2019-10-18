@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
+
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
     <title>Asteroid Game</title>
@@ -21,13 +21,13 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
          https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-database.js"></script>
-    
+
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md 12 col-12-lg" id="header">
+            <div class="col-12">
                 <h1>Asteroid</h1>
             </div>
         </div>
@@ -61,9 +61,10 @@
                         </tbody>
                     </table>
                 </div>
+                <button class="click">Click for PIC</button>
+                <div id="poster"></div>
             </div>
         </div>
-
     </div>
 
 
@@ -71,10 +72,14 @@
         <h2>Asteroid</h2>
     </footer>
 
-        <!-- Dominique's Firebase and Soundcloud Javascript link below -->
-    <script src="/homework/Project1/assets/javascript/firebase-soundcloud.js"></script>
-        <!-- Nick's Phaser Javascript Code -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+        </script>
 
+    <!-- Dominique's Firebase and Soundcloud Javascript link below -->
+    <script src="/homework/Project1/assets/javascript/firebase-soundcloud.js"></script>
+
+    <!-- Nick's Phaser Javascript Code -->
     <script src="assets/javascript/game.js"></script>
 
 
