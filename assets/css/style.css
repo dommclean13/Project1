@@ -71,3 +71,16 @@ td, th {
     text-align: center;
     width: 300px;
 }
+
+#gameOver {
+    background-repeat: no-repeat;
+    width: 35%;
+    margin: 0 auto;
+}
+
+.endBox {
+    padding-top: 130px;
+    margin: 0 auto;
+    text-align: center;
+    width: 300px;
+}
