@@ -34,7 +34,6 @@ function preload (){
     this.load.image('asteroid','assets/images/pixel_asteroid.png');
     this.load.image('exhaust','assets/images/thruster-4.png');
     this.load.image('laser','assets/images/pixel_laser_red.png');
-    this.load.image('background','assets/images/bg.jpg')
 }
 
 function create (){
@@ -45,9 +44,6 @@ function create (){
     player = this.physics.add.image(400, 300, 'ship').setScale(.5);
     var that = this;
     var playerSpeed = 100;
-
-    // Background image
-    this.add.image(0,0,'background')
 
     // Initial asteroid
     var asteroid = this.physics.add.image(400, 100, 'asteroid');
