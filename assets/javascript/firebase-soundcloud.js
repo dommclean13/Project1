@@ -14,6 +14,15 @@
   // // Initialize Firebase
   // firebase.initializeApp(firebaseConfig);
   // firebase.database();
+  $(document).ready(function() {
+  $(".container-fluid").hide();
+  
+  })
+
+  var startGame = $("#start-btn").on('click', function () {
+    $(this).parent().hide();
+    $('.container-fluid').show();
+});
 
 
 
