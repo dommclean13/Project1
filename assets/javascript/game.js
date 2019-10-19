@@ -14,15 +14,16 @@ var config = {
     scene: {
         preload: preload,
         create: create,
-        update: update
+        update: update,
     },
-        create: create
+        create: create,
 }
 
 var game = new Phaser.Game(config);
 var player;
 var rotation;
 var can_shoot = true;
+var lasers;
 
 function preload (){
     //this.load.setBaseURL('https://labs.phaser.io');
@@ -33,7 +34,8 @@ function preload (){
 }
 
 function create (){
-    var lasers = this.add.group();
+    lasers = this.physics.add.group();
+    lasers.enableBody = true;
     player = this.physics.add.image(400, 300, 'ship').setScale(.5);
     var playerSpeed = 100;
 
@@ -58,11 +60,17 @@ function create (){
         }
     });
 
+    var that = this;
+
     // Key spacebar pressed
     this.input.keyboard.on('keydown_SPACE', function (event) {
         if (can_shoot){
             can_shoot = false;
-            lasers.create(player.x,player.y,'laser');
+            //var laser = lasers.create(player.x,player.y,'laser');
+            var laser = that.physics.add.image(player.x,player.y,'laser')
+            laser.rotation = player.rotation;
+            console.log(laser.rotation)
+            laser.setVelocity(Math.cos(laser.rotation)*200,Math.sin(laser.rotation)*200);
         }
     });
 
@@ -77,6 +85,8 @@ function create (){
     asteroid.setBounce(1, 1);
     asteroid.setCollideWorldBounds(true);
 }
+
+
 function update(){
     if (player.x > 595){
         player.x = 0;
