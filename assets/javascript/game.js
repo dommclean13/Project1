@@ -47,7 +47,7 @@ function create (){
     var playerSpeed = 100;
 
     // Background image
-    this.add.image(0,0,'background').setScale(1)
+    this.add.image(0,0,'background')
 
     // Initial asteroid
     var asteroid = this.physics.add.image(400, 100, 'asteroid');
