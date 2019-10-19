@@ -59,3 +59,15 @@ td, th {
     border: solid pink 2px;
 }
 
+#startScreen {
+    background-repeat: no-repeat;
+    width: 35%;
+    margin: 0 auto;
+}
+
+.startBox {
+    padding-top: 130px;
+    margin: 0 auto;
+    text-align: center;
+    width: 300px;
+}
