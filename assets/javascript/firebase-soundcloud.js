@@ -21,6 +21,8 @@
   $("#gameOver").hide();
   })
 
+
+  
   var startGame = $("#start-btn").on('click', function () {
     $(this).parent().hide();
     $('.container-fluid').show();
@@ -58,7 +60,3 @@
 
 
 // url: "https://pixabay.com/api/?key=13979984-d2ae798e35c78a69340f780d3&q=lose+game&safesearch=true&image_type=illustration&category=sad",
-
-
-
-
