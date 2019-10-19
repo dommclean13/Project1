@@ -16,7 +16,7 @@
   // firebase.database();
   $(document).ready(function() {
   $(".container-fluid").hide();
-  
+  $("#gameOver").hide();
   })
 
   var startGame = $("#start-btn").on('click', function () {
