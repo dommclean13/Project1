@@ -24,6 +24,9 @@ var player;
 var rotation;
 var can_shoot = true;
 var lasers;
+var largeAsteroids;
+var mediumAsteroids;
+var smallAsteroids;
 
 function preload (){
     //this.load.setBaseURL('https://labs.phaser.io');
@@ -31,13 +34,35 @@ function preload (){
     this.load.image('asteroid','assets/images/pixel_asteroid.png');
     this.load.image('exhaust','assets/images/thruster-4.png');
     this.load.image('laser','assets/images/pixel_laser_red.png');
+    this.load.image('background','assets/images/bg.jpg')
 }
 
 function create (){
-    lasers = this.physics.add.group();
-    lasers.enableBody = true;
+    lasers = this.add.group();
+    largeAsteroids = this.add.group();
+    mediumAsteroids = this.add.group();
+    smallAsteroids = this.add.group();
     player = this.physics.add.image(400, 300, 'ship').setScale(.5);
+    var that = this;
     var playerSpeed = 100;
+
+    // Background image
+    this.add.image(0,0,'background').setScale(1)
+
+    // Initial asteroid
+    var asteroid = this.physics.add.image(400, 100, 'asteroid');
+    asteroid.setVelocity(100, 200);
+    asteroid.setBounce(.1, .1);
+    asteroid.setCollideWorldBounds(true);
+    largeAsteroids.add(asteroid)
+
+    // Collisions :D
+    this.physics.add.collider(player, largeAsteroids);
+    this.physics.add.collider(player, mediumAsteroids);
+    this.physics.add.collider(player, smallAsteroids);
+    this.physics.add.collider(lasers, largeAsteroids);
+    this.physics.add.collider(lasers, mediumAsteroids);
+    this.physics.add.collider(lasers, smallAsteroids);
 
     // Key W pressed
     this.input.keyboard.on('keydown_W', function (event){
@@ -50,6 +75,7 @@ function create (){
     this.input.keyboard.on('keydown_D', function (event) {
         if (player.body.angularVelocity < 70){
             player.body.angularVelocity += 5
+            console.log("test")
         }
     });
 
@@ -60,8 +86,6 @@ function create (){
         }
     });
 
-    var that = this;
-
     // Key spacebar pressed
     this.input.keyboard.on('keydown_SPACE', function (event) {
         if (can_shoot){
@@ -70,7 +94,8 @@ function create (){
             var laser = that.physics.add.image(player.x,player.y,'laser')
             laser.rotation = player.rotation;
             console.log(laser.rotation)
-            laser.setVelocity(Math.cos(laser.rotation)*200,Math.sin(laser.rotation)*200);
+            laser.setVelocity(Math.cos(laser.rotation)*400,Math.sin(laser.rotation)*400);
+            lasers.add(laser)
         }
     });
 
@@ -79,15 +104,11 @@ function create (){
         can_shoot = true;
     });
 
-    var asteroid = this.physics.add.image(400, 100, 'asteroid');
-
-    asteroid.setVelocity(100, 200);
-    asteroid.setBounce(1, 1);
-    asteroid.setCollideWorldBounds(true);
 }
 
 
 function update(){
+    // Make the player teleport
     if (player.x > 595){
         player.x = 0;
     }else if (player.y > 430){
