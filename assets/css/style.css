@@ -95,3 +95,8 @@ td, th {
     text-align: center;
     width: 300px;
 }
+
+#api {
+    background-color: rgb(180, 72, 162);
+    color: white;
+}
