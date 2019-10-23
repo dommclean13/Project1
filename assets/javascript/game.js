@@ -30,6 +30,14 @@ var smallAsteroids;
 var score = 0;
 var that;
 var scoreDisp;
+var difficulty = 1;
+var running = false;
+
+function play(){
+    score = 0;
+    that.scene.start();
+    running = true;
+}
 
 function preload (){
     //this.load.setBaseURL('https://labs.phaser.io');
@@ -47,10 +55,10 @@ function gameOver(){
     $(".container-fluid").hide();
     $("#gameOver").show();
     $("#endGameScore").html("Here's your score " + "<br>" + "[ " + score + " ]");
+    this.scene.stop();
 }
 
-
-function destroyAsteroid(object1,object2){  
+function destroyAsteroid(object1,object2){
     if (object1.texture.key === "laser"){
         object1.destroy();
     }else{
@@ -89,6 +97,9 @@ function destroyAsteroid(object1,object2){
 }
 
 function create (){
+    if (!running){
+        this.scene.stop();
+    }
     lasers = this.add.group();
     largeAsteroids = this.add.group();
     mediumAsteroids = this.add.group();
@@ -157,7 +168,7 @@ function create (){
 }
 
 function update(){
-    // Make the player teleport
+    // Make the player teleport    
     if (player.x > 595){
         player.x = 0;
     }else if (player.y > 430){
