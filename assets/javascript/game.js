@@ -42,13 +42,13 @@ function preload (){
 
 function gameOver(){
     console.log("Game over!")
+    $(".container-fluid").hide();
+    $("#gameOver").show();
+    $("#endGameScore").html("Here's your score " + "<br>" + "[ " + score + " ]");
 }
 
 
-function destroyAsteroid(object1,object2){
-    console.log(object1)
-    console.log(object2)
-    
+function destroyAsteroid(object1,object2){  
     if (object1.texture.key === "laser"){
         object1.destroy();
     }else{

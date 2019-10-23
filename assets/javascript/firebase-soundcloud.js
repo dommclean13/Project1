@@ -18,8 +18,8 @@ function resetGame() {
 $('.playAgain').on('click', function () {
 
     $('.container-fluid').show();
-    $('#timesUp').hide();
     $('#start-btn').hide();
+    $('#gameOver').hide();
 
   })
 
