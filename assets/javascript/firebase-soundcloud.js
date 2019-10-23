@@ -29,22 +29,18 @@ var startGame = $("#start-btn").on('click', function () {
 });
 
 
+
 $(".click").on("click", function () {
   var sad = "lose+game&safesearch=true&image_type=illustration&category=sad"
-
   var queryURL = "https://pixabay.com/api/?key=13979984-d2ae798e35c78a69340f780d3&q=" + sad;
 
   $.ajax({
     url: queryURL,
     method: "GET"
-
   }).then(function (response) {
     console.log(response);
-
     var image = $("<img>").addClass("img-fluid").attr("src", response.hits[0].previewURL);
-
     $("#poster").empty().append(image);
-
   });
 });
 
