@@ -4,7 +4,7 @@ $(document).ready(function () {
 })
 
 
-  function resetGame() {
+function resetGame() {
 
     $('.playAgain').on('click', function () {
         
@@ -15,11 +15,21 @@ $(document).ready(function () {
     })
 };
 
+$('.playAgain').on('click', function () {
+
+    $('.container-fluid').show();
+    $('#timesUp').hide();
+    $('#start-btn').hide();
+
+  })
+};
+
 var startGame = $("#start-btn").on('click', function () {
   $(this).parent().hide();
   $('.container-fluid').show();
   $("#gameOver").hide();
 });
+
 
 $(".click").on("click", function () {
 
