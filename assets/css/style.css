@@ -109,3 +109,13 @@ h3 {
     text-align: center;
     line-height: 55px;
 }
+
+h4 {
+    background-color: rgb(180, 72, 162);
+    height: 60px;
+    color: white;
+    font-family: "8bit";
+    font-size: 30px;
+    text-align: center;
+    line-height: 55px;
+}
