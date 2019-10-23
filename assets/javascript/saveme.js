@@ -8,3 +8,5 @@
 //    accelerationX: 300        
 //});
 //playerEmitter.startFollow(player);
+//this.restart();
+//this.stop();
