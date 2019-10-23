@@ -34,6 +34,7 @@ var difficulty = 1;
 var running = false;
 
 function play(){
+    score = 0;
     that.scene.start();
     running = true;
 }
@@ -54,6 +55,7 @@ function gameOver(){
     $(".container-fluid").hide();
     $("#gameOver").show();
     $("#endGameScore").html("Here's your score " + "<br>" + "[ " + score + " ]");
+    this.scene.stop();
 }
 
 function destroyAsteroid(object1,object2){
