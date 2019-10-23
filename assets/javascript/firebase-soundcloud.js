@@ -6,19 +6,23 @@ $(document).ready(function () {
 
 function resetGame() {
 
-  $('.playAgain').on('click', function () {
+    $('.playAgain').on('click', function () {
+        
+        $('.container-fluid').show();
+        $('#timesUp').hide();
+        $('#start-btn').hide();
 
+    })
+};
+
+$('.playAgain').on('click', function () {
 
     $('.container-fluid').show();
     $('#timesUp').hide();
     $('#start-btn').hide();
 
-
-
-
   })
 };
-
 
 var startGame = $("#start-btn").on('click', function () {
   $(this).parent().hide();
@@ -32,7 +36,6 @@ $(".click").on("click", function () {
   var sad = "lose+game&safesearch=true&image_type=illustration&category=sad"
 
   var queryURL = "https://pixabay.com/api/?key=13979984-d2ae798e35c78a69340f780d3&q=" + sad;
-
 
   $.ajax({
     url: queryURL,
