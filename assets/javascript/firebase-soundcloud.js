@@ -6,12 +6,9 @@ $(".click").on("click", function () {
   $.ajax({
     url: queryURL,
     method: "GET"
-
   }).then(function (response) {
     console.log(response);
-
     var image = $("<img>").addClass("img-fluid").attr("src", response.hits[0].previewURL);
-
     $("#poster").empty().append(image);
   });
 });
