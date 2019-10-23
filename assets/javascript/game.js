@@ -46,16 +46,18 @@ function preload (){
     this.load.image('exhaust','assets/images/thruster-4.png');
     this.load.image('laser','assets/images/pixel_laser_red.png');
     this.load.audio('shoot','assets/sounds/shoot.wav');
-    this.load.audio('deadship','assets/sounds/deadship.wav');
-    this.load.audio('deadasteroid','assets/sounds/deadasteroid.wav')
+    this.load.audio('asteroidhit','assets/sounds/asteroidhit.wav');
+    this.load.audio('deadasteroid','assets/sounds/deadasteroid.wav');
+    this.load.audio('gameover','assets/sounds/gameover.wav')
     that = this;
 }
 
 function gameOver(){
+    that.sound.play('gameover');
     $(".container-fluid").hide();
     $("#gameOver").show();
     $("#endGameScore").html("Here's your score " + "<br>" + "[ " + score + " ]");
-    this.scene.stop();
+    that.scene.stop();
 }
 
 function destroyAsteroid(object1,object2){
@@ -69,6 +71,7 @@ function destroyAsteroid(object1,object2){
     }
 
     if (largeAsteroids.contains(object2)){
+        that.sound.play('asteroidhit');
         score++;
         var ast = that.physics.add.image(object2.x,object2.y,'asteroid');
         ast.setVelocity(object2.body.velocity.x,object2.body.velocity.y);
@@ -77,6 +80,7 @@ function destroyAsteroid(object1,object2){
         ast.setBounce(.3);
         mediumAsteroids.add(ast);
     }else if (mediumAsteroids.contains(object2)){
+        that.sound.play('asteroidhit');
         score+=2;
         var ast = that.physics.add.image(object2.x,object2.y,'asteroid');
         ast.setCollideWorldBounds(true);
@@ -85,6 +89,7 @@ function destroyAsteroid(object1,object2){
         ast.setBounce(.4);
         smallAsteroids.add(ast);
     }else{
+        that.sound.play('deadasteroid')
         score+=3;
         var ast = that.physics.add.image(400, 100, 'asteroid');
         ast.setVelocity(100, 200);
