@@ -16,7 +16,7 @@ var config = {
         create: create,
         update: update,
     },
-        create: create,
+        create: create
 }
 
 var game = new Phaser.Game(config);
@@ -63,23 +63,28 @@ function destroyAsteroid(object1,object2){
     if (largeAsteroids.contains(object2)){
         score++;
         var ast = that.physics.add.image(object2.x,object2.y,'asteroid');
-        ast.setVelocity(object2.body.velocity.x,object2.body.velocity.y)
-        ast.setScale(.75)
+        ast.setVelocity(object2.body.velocity.x,object2.body.velocity.y);
+        ast.setScale(.75);
         ast.setCollideWorldBounds(true);
-        ast.setBounce(.3)
-        mediumAsteroids.add(ast)
+        ast.setBounce(.3);
+        mediumAsteroids.add(ast);
     }else if (mediumAsteroids.contains(object2)){
         score+=2;
         var ast = that.physics.add.image(object2.x,object2.y,'asteroid');
         ast.setCollideWorldBounds(true);
-        ast.setVelocity(object2.body.velocity.x,object2.body.velocity.y)
-        ast.setScale(.5)
-        ast.setBounce(.4)
-        smallAsteroids.add(ast)
+        ast.setVelocity(object2.body.velocity.x,object2.body.velocity.y);
+        ast.setScale(.5);
+        ast.setBounce(.4);
+        smallAsteroids.add(ast);
     }else{
         score+=3;
+        var ast = that.physics.add.image(400, 100, 'asteroid');
+        ast.setVelocity(100, 200);
+        ast.setBounce(.2, .2);
+        ast.setCollideWorldBounds(true);
+        largeAsteroids.add(ast);
     }
-    scoreDisp.setText("Score: " + score)
+    scoreDisp.setText("Score: " + score);
     object2.destroy();
 }
 
@@ -101,7 +106,7 @@ function create (){
     asteroid.setVelocity(100, 200);
     asteroid.setBounce(.2, .2);
     asteroid.setCollideWorldBounds(true);
-    largeAsteroids.add(asteroid)
+    largeAsteroids.add(asteroid);
 
     // Collisions :D
     this.physics.add.collider(player, largeAsteroids,gameOver);
@@ -137,7 +142,7 @@ function create (){
             can_shoot = false;
             //var laser = lasers.create(player.x,player.y,'laser');
             var laser = that.physics.add.image(player.x,player.y,'laser')
-            laser.rotation = player.rotation;
+            laser.rotation = player.rotation
             laser.setVelocity(Math.cos(laser.rotation)*400,Math.sin(laser.rotation)*400)
             that.sound.play('shoot');
             lasers.add(laser)
