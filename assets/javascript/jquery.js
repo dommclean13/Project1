@@ -1,0 +1,26 @@
+$(document).ready(function () {
+    $(".container-fluid").hide();
+    $("#gameOver").hide();
+  })
+  
+  function resetGame() {
+  
+      $('.playAgain').on('click', function () {
+          
+          $('.container-fluid').show();
+          $('#start-btn').hide();
+      })
+  };
+  
+  $('.playAgain').on('click', function () {
+  
+      $('.container-fluid').show();
+      $('#start-btn').hide();
+      $('#gameOver').hide();
+    })
+  
+  var startGame = $("#start-btn").on('click', function () {
+    $(this).parent().hide();
+    $('.container-fluid').show();
+    $("#gameOver").hide();
+  });
