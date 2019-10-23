@@ -37,11 +37,13 @@ function preload (){
     this.load.image('asteroid','assets/images/pixel_asteroid.png');
     this.load.image('exhaust','assets/images/thruster-4.png');
     this.load.image('laser','assets/images/pixel_laser_red.png');
+    this.load.audio('shoot','assets/sounds/shoot.wav');
+    this.load.audio('deadship','assets/sounds/deadship.wav');
+    this.load.audio('deadasteroid','assets/sounds/deadasteroid.wav')
     that = this;
 }
 
 function gameOver(){
-    console.log("Game over!")
     $(".container-fluid").hide();
     $("#gameOver").show();
     $("#endGameScore").html("Here's your score " + "<br>" + "[ " + score + " ]");
@@ -113,7 +115,6 @@ function create (){
     this.input.keyboard.on('keydown_W', function (event){
         player.body.setVelocity(Math.floor(playerSpeed*Math.cos(player.body.rotation*3.14/180))
         ,Math.floor(playerSpeed*Math.sin(player.body.rotation*3.14/180)))
-        console.log(player.x)
     });
 
     // Key D pressed
@@ -137,8 +138,8 @@ function create (){
             //var laser = lasers.create(player.x,player.y,'laser');
             var laser = that.physics.add.image(player.x,player.y,'laser')
             laser.rotation = player.rotation;
-            console.log(laser.rotation)
-            laser.setVelocity(Math.cos(laser.rotation)*400,Math.sin(laser.rotation)*400);
+            laser.setVelocity(Math.cos(laser.rotation)*400,Math.sin(laser.rotation)*400)
+            that.sound.play('shoot');
             lasers.add(laser)
         }
     });
