@@ -19,7 +19,6 @@ body {
 
 h1 {
     text-align: center;
-
     color: white;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-color: rgb(180, 72, 162);
@@ -99,4 +98,14 @@ td, th {
 #api {
     background-color: rgb(180, 72, 162);
     color: white;
+}
+
+h3 {
+    background-color: rgb(180, 72, 162);
+    height: 60px;
+    color: white;
+    font-family: "8bit";
+    font-size: 30px;
+    text-align: center;
+    line-height: 55px;
 }
