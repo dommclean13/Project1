@@ -22,7 +22,6 @@ $('.playAgain').on('click', function () {
     $('#start-btn').hide();
 
   })
-};
 
 var startGame = $("#start-btn").on('click', function () {
   $(this).parent().hide();
