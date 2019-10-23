@@ -27,6 +27,9 @@ var lasers;
 var largeAsteroids;
 var mediumAsteroids;
 var smallAsteroids;
+var score = 0;
+var that;
+var scoreDisp;
 
 function preload (){
     //this.load.setBaseURL('https://labs.phaser.io');
@@ -34,6 +37,48 @@ function preload (){
     this.load.image('asteroid','assets/images/pixel_asteroid.png');
     this.load.image('exhaust','assets/images/thruster-4.png');
     this.load.image('laser','assets/images/pixel_laser_red.png');
+    that = this;
+}
+
+function gameOver(){
+    console.log("Game over!")
+}
+
+
+function destroyAsteroid(object1,object2){
+    console.log(object1)
+    console.log(object2)
+    
+    if (object1.texture.key === "laser"){
+        object1.destroy();
+    }else{
+        var temp1 = object1;
+        var temp2 = object2;
+        object1 = temp2;
+        object2 = temp1;
+    }
+
+    if (largeAsteroids.contains(object2)){
+        score++;
+        var ast = that.physics.add.image(object2.x,object2.y,'asteroid');
+        ast.setVelocity(object2.body.velocity.x,object2.body.velocity.y)
+        ast.setScale(.75)
+        ast.setCollideWorldBounds(true);
+        ast.setBounce(.3)
+        mediumAsteroids.add(ast)
+    }else if (mediumAsteroids.contains(object2)){
+        score+=2;
+        var ast = that.physics.add.image(object2.x,object2.y,'asteroid');
+        ast.setCollideWorldBounds(true);
+        ast.setVelocity(object2.body.velocity.x,object2.body.velocity.y)
+        ast.setScale(.5)
+        ast.setBounce(.4)
+        smallAsteroids.add(ast)
+    }else{
+        score+=3;
+    }
+    scoreDisp.setText("Score: " + score)
+    object2.destroy();
 }
 
 function create (){
@@ -42,23 +87,27 @@ function create (){
     mediumAsteroids = this.add.group();
     smallAsteroids = this.add.group();
     player = this.physics.add.image(400, 300, 'ship').setScale(.5);
-    var that = this;
     var playerSpeed = 100;
+
+    // Score display
+    scoreDisp  = this.add.text(16, 16, 'Score: ' + score, {
+        fontFamily: '"8bit"'
+    });
 
     // Initial asteroid
     var asteroid = this.physics.add.image(400, 100, 'asteroid');
     asteroid.setVelocity(100, 200);
-    asteroid.setBounce(.1, .1);
+    asteroid.setBounce(.2, .2);
     asteroid.setCollideWorldBounds(true);
     largeAsteroids.add(asteroid)
 
     // Collisions :D
-    this.physics.add.collider(player, largeAsteroids);
-    this.physics.add.collider(player, mediumAsteroids);
-    this.physics.add.collider(player, smallAsteroids);
-    this.physics.add.collider(lasers, largeAsteroids);
-    this.physics.add.collider(lasers, mediumAsteroids);
-    this.physics.add.collider(lasers, smallAsteroids);
+    this.physics.add.collider(player, largeAsteroids,gameOver);
+    this.physics.add.collider(player, mediumAsteroids,gameOver);
+    this.physics.add.collider(player, smallAsteroids,gameOver);
+    this.physics.add.collider(lasers, largeAsteroids,destroyAsteroid);
+    this.physics.add.collider(lasers, mediumAsteroids,destroyAsteroid);
+    this.physics.add.collider(lasers, smallAsteroids,destroyAsteroid);
 
     // Key W pressed
     this.input.keyboard.on('keydown_W', function (event){
@@ -71,7 +120,6 @@ function create (){
     this.input.keyboard.on('keydown_D', function (event) {
         if (player.body.angularVelocity < 70){
             player.body.angularVelocity += 5
-            console.log("test")
         }
     });
 
@@ -101,7 +149,6 @@ function create (){
     });
 
 }
-
 
 function update(){
     // Make the player teleport
