@@ -3,23 +3,12 @@ $(document).ready(function () {
   $("#gameOver").hide();
 })
 
-
-function resetGame() {
-    $('.playAgain').on('click', function () {
-        
-        $('.container-fluid').show();
-        $('#timesUp').hide();
-        $('#start-btn').hide();
-
-    })
-};
-
 $('.playAgain').on('click', function () {
     $('.container-fluid').show();
     $('#start-btn').hide();
     $('#gameOver').hide();
     play();
-  })
+})
 
 var startGame = $("#start-btn").on('click', function () {
   $(this).parent().hide();
@@ -27,8 +16,6 @@ var startGame = $("#start-btn").on('click', function () {
   $("#gameOver").hide();
   play();
 });
-
-
 
 $(".click").on("click", function () {
   var sad = "lose+game&safesearch=true&image_type=illustration&category=sad"
@@ -62,5 +49,9 @@ $(".submit").on("click", function(){
       name: String($("#name").val()),
       score: String(score)
     });
+    $('.container-fluid').show();
+    $('#start-btn').hide();
+    $('#gameOver').hide();
+    play();
   }
 });
