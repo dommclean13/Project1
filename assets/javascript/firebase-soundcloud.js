@@ -36,3 +36,15 @@ $(".submit").on("click", function(){
     play();
   }
 });
+
+firebase.database().ref("/").on("child_added", function(snap) {
+  console.log("added:", snap.key, snap.val());
+  if (snap.key === "name"){
+    $("#scoreboard").append("<tr>")
+    $("#scoreboard").append("<td> 1 </td>")
+    $("#scoreboard").append("<td>"+snap.val()+"</td")
+  }else{
+    $("#scoreboard").append("<td>"+snap.val()+"</td")
+    $("#scoreboard").append("</tr>")
+  }
+});
