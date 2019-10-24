@@ -16,3 +16,4 @@ var startGame = $("#start-btn").on('click', function () {
     $("#gameOver").hide();
     play();
 });
+
