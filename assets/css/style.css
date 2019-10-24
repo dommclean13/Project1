@@ -58,7 +58,8 @@ button {
 td, th {
     background-color: rgb(16, 19, 17);
     color: rgb(224, 26, 175);
-    font-size: 20px;
+    font-size: 15px;
+    font-family: "8bit";
 }
 
 .score {
@@ -87,7 +88,7 @@ td, th {
 }
 
 .endBox {
-    padding-top: 130px;
+    padding-top: 10px;
     margin: 0 auto;
     text-align: center;
     width: 300px;
@@ -127,3 +128,27 @@ h4 {
 .table-wrapper-scroll-y {
     display: block;
     }
+
+.click {
+    margin-top: 1px;
+}
+
+.ptag, #endGameScore {
+    margin-top: 15px;
+}
+
+input {
+    background-color: rgb(16, 19, 17);
+    color: white;
+    font-size: 15px;
+    font-family: "8bit";
+    width: 250px;
+}
+
+.submit {
+    margin-top: 10px;
+    width: 120px;
+    height: 35px;
+    text-align: center;
+    font-size: 15px;
+}
