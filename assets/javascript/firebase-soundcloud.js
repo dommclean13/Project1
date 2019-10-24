@@ -12,23 +12,23 @@ $(".click").on("click", function () {
   });
 });
 
+var firebaseConfig = {
+  apiKey: "AIzaSyAHhb_obGgFcHKtRToHQ3FPmpp17xA98W0",
+  authDomain: "thebestdatabase-67d89.firebaseapp.com",
+  databaseURL: "https://thebestdatabase-67d89.firebaseio.com",
+  projectId: "thebestdatabase-67d89",
+  storageBucket: "thebestdatabase-67d89.appspot.com",
+  messagingSenderId: "644479964175",
+  appId: "1:644479964175:web:e5eb5197521879c6d87f7a"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-// Your web app's Firebase configuration
-  // var firebaseConfig = {
-  //   apiKey: "AIzaSyClwRXheZqZBWVw78UKc_agW1OJekjqSw8",
-  //   authDomain: "the-game-63f83.firebaseapp.com",
-  //   databaseURL: "https://the-game-63f83.firebaseio.com",
-  //   projectId: "the-game-63f83",
-  //   storageBucket: "the-game-63f83.appspot.com",
-  //   messagingSenderId: "183555544943",
-  //   appId: "1:183555544943:web:4730fb7de6051856aafa9a",
-  //   measurementId: "G-WD2PVF9L1J"
-  // };
-
-
-  // // Initialize Firebase
-  // firebase.initializeApp(firebaseConfig);
-  // firebase.database();
-
-
-// url: "https://pixabay.com/api/?key=13979984-d2ae798e35c78a69340f780d3&q=lose+game&safesearch=true&image_type=illustration&category=sad",
+$(".submit").on("click", function(){
+  if (("#name").length != 0){
+    firebase.database().ref('/').set({
+      name: String($("#name").val()),
+      score: String(score)
+    });
+  }
+});
