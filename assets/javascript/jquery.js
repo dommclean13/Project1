@@ -3,17 +3,6 @@ $(document).ready(function () {
     $("#gameOver").hide();
 })
 
-
-
-function resetGame() {
-    $('.playAgain').on('click', function () {
-        $('.container-fluid').show();
-        $('#start-btn').hide();
-    })
-};
-
-
-
 $('.playAgain').on('click', function () {
     $('.container-fluid').show();
     $('#start-btn').hide();
